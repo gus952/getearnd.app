@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>earnd. — For Partners</title>
+<meta name="description" content="Join Earnd as a founding partner. Get your venue in front of motivated, health-conscious customers in Barcelona. Free to join, zero risk.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f3eee2; --white: #faf7f0; --surface: #ebe5d4; --surface2: #e1dac5;
+  --hair: #d4ccb6; --hair2: #b7ad93;
+  --text: #1a2419; --soft: #3a443a; --muted: #6e6a58; --faint: #9a9684;
+  --sage: #2d5a3f; --sage-deep: #1a3d28; --sage-bg: #dde3d2;
+  --gold: #9a7128; --gold-deep: #6e4f17; --gold-bg: #ece0c2;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --body: 'Outfit', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.lp-nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(243,238,226,0.82);border-bottom:1px solid rgba(45,90,63,0.08);display:flex;justify-content:space-between;align-items:center;padding:14px 48px;transition:box-shadow .3s;}
+.lp-nav.scrolled{box-shadow:0 2px 20px rgba(40,40,20,0.08);}
+.lp-nav .logo{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--sage);letter-spacing:-0.03em;text-decoration:none;}
+.lp-nav .logo .dot{color:var(--gold);}
+.nav-links{display:flex;gap:8px;align-items:center;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--soft);text-decoration:none;padding:8px 16px;border-radius:999px;transition:all .15s;}
+.nav-links a:hover{color:var(--sage);background:rgba(45,90,63,0.06);}
+.nav-links .cta-link{background:var(--sage);color:var(--cream);font-weight:600;}
+.nav-links .cta-link:hover{background:var(--sage-deep);color:var(--cream);}
+.lang-switcher{display:flex;gap:4px;align-items:center;margin-left:8px;border-left:1px solid var(--hair);padding-left:12px;}
+.lang-btn{font-size:12px;font-weight:600;color:var(--muted);background:none;border:1px solid transparent;border-radius:6px;padding:4px 8px;cursor:pointer;transition:all .15s;letter-spacing:0.02em;}
+.lang-btn:hover{color:var(--sage);border-color:var(--hair);}
+.lang-btn.active{color:var(--sage);background:var(--sage-bg);border-color:rgba(45,90,63,0.15);}
+
+/* SECTIONS */
+.lp-section{padding:100px 48px;position:relative;}
+.lp-container{max-width:1100px;margin:0 auto;}
+.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:14px;}
+.section-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);line-height:1.06;letter-spacing:-0.015em;color:var(--text);}
+.section-h2 .it{font-style:italic;color:var(--gold);}
+.section-sub{font-size:17px;line-height:1.55;color:var(--soft);margin-top:14px;max-width:580px;text-wrap:pretty;}
+
+/* HERO */
+.partner-hero{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:140px 48px 80px;text-align:center;}
+.partner-hero-inner{max-width:720px;}
+.partner-hero .section-eyebrow{margin-bottom:20px;}
+.partner-hero .hero-h1{font-family:var(--serif);font-size:clamp(36px,5vw,56px);line-height:1.06;letter-spacing:-0.02em;color:var(--text);margin-bottom:20px;}
+.partner-hero .hero-h1 .it{font-style:italic;color:var(--gold);}
+.partner-hero .hero-sub{font-size:18px;line-height:1.55;color:var(--soft);max-width:560px;margin:0 auto;text-wrap:pretty;}
+
+/* BENEFITS */
+.lp-benefits{background:var(--white);}
+.partner-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.p-benefit{background:var(--cream);border:1px solid var(--hair);border-radius:18px;padding:28px 24px;}
+.p-benefit-num{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--gold);}
+.p-benefit-t{font-size:18px;font-weight:600;color:var(--text);margin-top:12px;line-height:1.25;}
+.p-benefit-d{font-size:14px;color:var(--muted);line-height:1.55;margin-top:8px;}
+
+/* SHOWCASE */
+.lp-showcase{background:var(--cream);}
+.showcase-inner{display:flex;gap:64px;align-items:center;margin-top:48px;}
+.showcase-phone-wrap{flex-shrink:0;}
+.showcase-features{display:flex;flex-direction:column;gap:24px;}
+.sc-feat{display:flex;gap:16px;align-items:flex-start;}
+.sc-feat-icon{width:44px;height:44px;border-radius:12px;background:var(--sage-bg);border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--sage);}
+.sc-feat-t{font-size:16px;font-weight:600;color:var(--text);line-height:1.2;}
+.sc-feat-d{font-size:14px;color:var(--muted);line-height:1.5;margin-top:4px;}
+
+/* PHONE (for showcase) */
+.ep-phone{width:290px;background:#0e120f;border-radius:44px;padding:7px;box-shadow:0 40px 100px rgba(0,0,0,0.25),0 0 0 1px rgba(255,255,255,0.05);position:relative;flex-shrink:0;}
+.ep-notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:95px;height:26px;background:#000;border-radius:999px;z-index:20;}
+.ep-screen{background:var(--cream);border-radius:38px;height:600px;overflow:hidden;position:relative;}
+.ep-home-bar{width:100px;height:4px;background:rgba(255,255,255,0.15);border-radius:999px;margin:6px auto 4px;}
+.ep-sbar{position:absolute;top:0;left:0;right:0;height:48px;display:flex;justify-content:space-between;align-items:center;padding:14px 28px 0;color:var(--text);font-size:14px;font-weight:600;z-index:10;}
+.ep-sbar-r{display:flex;gap:5px;align-items:center;}
+.ep-content{position:absolute;top:48px;left:0;right:0;bottom:0;animation:epFade .28s ease;}
+@keyframes epFade{from{opacity:0;transform:translateX(24px);}to{opacity:1;transform:translateX(0);}}
+.ep-browse{display:flex;flex-direction:column;height:100%;padding:6px 16px 12px;}
+.ep-browse-head{margin-bottom:6px;}
+.ep-browse-logo{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--sage);letter-spacing:-0.03em;}
+.ep-browse-title{font-size:17px;font-weight:600;color:var(--text);margin-top:4px;}
+.ep-chips{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;flex-shrink:0;}
+.ep-chip{font-family:var(--body);font-size:11px;font-weight:600;color:var(--muted);background:var(--white);border:1px solid var(--hair);border-radius:999px;padding:5px 13px;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.ep-chip.active{background:var(--sage);color:var(--cream);border-color:var(--sage);}
+.ep-list{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px;}
+.ep-card{display:flex;align-items:center;gap:12px;padding:12px;background:var(--white);border:1px solid var(--hair);border-radius:14px;cursor:pointer;transition:border-color .15s;}
+.ep-card:hover{border-color:var(--sage);}
+.ep-card-logo{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;}
+.ep-card-info{flex:1;min-width:0;}
+.ep-card-name{font-size:14px;font-weight:600;color:var(--text);}
+.ep-card-row{display:flex;gap:8px;align-items:center;margin-top:3px;}
+.ep-card-cat{font-size:10px;font-weight:600;letter-spacing:0.04em;color:var(--sage);background:var(--sage-bg);padding:2px 7px;border-radius:999px;}
+.ep-card-dist{font-size:11px;color:var(--muted);}
+.ep-card-badges{display:flex;gap:5px;margin-top:5px;}
+.ep-mini-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:0.02em;}
+.ep-mini-badge.sage{background:var(--sage-bg);color:var(--sage);}
+.ep-mini-badge.gold{background:var(--gold-bg);color:var(--gold-deep);}
+.ep-card-chevron{flex-shrink:0;margin-left:auto;}
+.ep-detail{height:100%;overflow-y:auto;}
+.ep-detail-cover{height:90px;position:relative;}
+.ep-back{position:absolute;top:10px;left:12px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.25);backdrop-filter:blur(4px);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;z-index:5;}
+.ep-back-dark{background:rgba(45,90,63,0.12);color:var(--sage);position:relative;top:0;left:0;margin:0 0 8px;}
+.ep-detail-logo-chip{position:absolute;left:16px;bottom:-18px;width:42px;height:42px;border-radius:12px;border:2px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(40,40,20,0.12);}
+.ep-detail-body{padding:22px 16px 16px;}
+.ep-detail-name{font-family:var(--serif);font-size:22px;color:var(--text);letter-spacing:-0.01em;}
+.ep-detail-meta{display:flex;gap:10px;align-items:center;margin-top:7px;}
+.ep-tag{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--sage);background:var(--sage-bg);padding:3px 9px;border-radius:999px;}
+.ep-detail-dist{font-size:11px;color:var(--muted);}
+.ep-detail-dist strong{color:var(--soft);}
+.ep-detail-addr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-top:6px;}
+.ep-map{height:52px;margin-top:12px;border-radius:12px;background:repeating-linear-gradient(90deg,rgba(0,0,0,0.04),rgba(0,0,0,0.04) 1px,transparent 1px,transparent 18px),repeating-linear-gradient(0deg,rgba(0,0,0,0.04),rgba(0,0,0,0.04) 1px,transparent 1px,transparent 18px),#e7e1d0;border:1px solid var(--hair);position:relative;}
+.ep-map-pin{position:absolute;width:12px;height:12px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,0.2);}
+.ep-map-pin-you{background:var(--gold) !important;}
+.ep-section-title{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px;}
+.ep-reward{border:1px solid var(--hair);border-radius:13px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;background:var(--white);}
+.ep-reward-badge{width:36px;height:36px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:.9;}
+.ep-reward-badge.sage{background:var(--sage-bg);color:var(--sage);}
+.ep-reward-badge.gold{background:var(--gold-bg);color:var(--gold-deep);}
+.ep-rb-big{font-family:var(--serif);font-style:italic;font-size:16px;}
+.ep-rb-sm{font-size:7px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
+.ep-reward-info{flex:1;}
+.ep-reward-title{font-size:13px;font-weight:600;color:var(--text);}
+.ep-reward-cond{font-size:10px;color:var(--muted);margin-top:2px;}
+.ep-redeem-btn{width:30px;height:30px;border-radius:50%;background:var(--sage);color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:transform .15s;}
+.ep-redeem-btn:hover{transform:scale(1.1);}
+.ep-detail-about{font-size:12px;color:var(--muted);line-height:1.5;}
+.ep-redeem-screen{height:100%;padding:14px 20px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,var(--sage-bg) 0%,var(--cream) 50%);}
+.ep-redeem-check-circle{width:72px;height:72px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;margin-top:20px;animation:epPop .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 10px 28px rgba(45,90,63,0.25);}
+@keyframes epPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.ep-redeem-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-top:14px;}
+.ep-redeem-heading{font-family:var(--serif);font-size:22px;color:var(--text);margin-top:6px;}
+.ep-redeem-card{background:var(--white);border:1px solid var(--hair);border-radius:18px;padding:20px;text-align:center;width:100%;margin-top:16px;box-shadow:0 8px 24px rgba(40,40,20,0.06);}
+.ep-redeem-partner{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);}
+.ep-redeem-amount{font-family:var(--serif);font-style:italic;font-size:44px;line-height:1;margin-top:8px;}
+.ep-redeem-amount.sage{color:var(--sage);}
+.ep-redeem-amount.gold{color:var(--gold);}
+.ep-redeem-desc{font-size:13px;color:var(--soft);margin-top:4px;}
+.ep-redeem-code-label{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:14px;}
+.ep-redeem-code{font-family:var(--mono);font-size:20px;font-weight:600;color:var(--text);margin-top:4px;letter-spacing:0.06em;}
+.ep-qr{width:100px;height:100px;margin:12px auto;display:grid;grid-template-columns:repeat(11,1fr);gap:1px;padding:6px;background:#fff;border-radius:8px;border:1px solid var(--hair);}
+.ep-qr div.on{background:var(--text);border-radius:1px;}
+.ep-qr div.off{background:#fff;}
+.ep-redeem-expiry{font-size:10px;color:var(--muted);margin-top:6px;}
+.ep-done-btn{margin-top:auto;width:100%;padding:14px;background:var(--sage);color:var(--cream);border:none;border-radius:14px;font-family:var(--body);font-size:14px;font-weight:600;cursor:pointer;margin-bottom:8px;}
+
+/* CTA BOX */
+.partner-cta-box{margin-top:48px;background:var(--sage-deep);border-radius:20px;padding:48px;display:flex;justify-content:space-between;align-items:center;gap:40px;}
+.pcta-text h3{font-family:var(--serif);font-size:28px;color:var(--cream);line-height:1.1;}
+.pcta-text h3 .it{font-style:italic;color:#e8d8a8;}
+.pcta-text p{font-size:14px;color:rgba(243,238,226,0.6);margin-top:10px;line-height:1.5;}
+.pcta-btn{padding:16px 32px;background:var(--cream);color:var(--sage-deep);border:none;border-radius:14px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .15s;text-decoration:none;display:inline-block;}
+.pcta-btn:hover{transform:translateY(-2px);}
+
+/* CONTACT FORM */
+.partner-form{max-width:500px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px;}
+.partner-form input,.partner-form textarea{padding:14px 20px;border:1px solid var(--hair);border-radius:14px;font-family:var(--body);font-size:15px;background:var(--white);color:var(--text);outline:none;transition:border .2s;}
+.partner-form input:focus,.partner-form textarea:focus{border-color:var(--sage);}
+.partner-form input::placeholder,.partner-form textarea::placeholder{color:var(--faint);}
+.partner-form textarea{resize:vertical;min-height:100px;}
+.partner-form button{padding:16px 32px;background:var(--sage);color:var(--cream);border:none;border-radius:14px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer;transition:background .15s;}
+.partner-form button:hover{background:var(--sage-deep);}
+.partner-form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:8px;}
+
+/* FOOTER */
+.lp-footer{background:var(--sage-deep);color:rgba(243,238,226,0.5);padding:40px 48px;display:flex;justify-content:space-between;align-items:center;}
+.lp-footer .logo{font-family:var(--serif);font-style:italic;font-size:24px;color:rgba(243,238,226,0.7);letter-spacing:-0.03em;text-decoration:none;}
+.lp-footer .logo .dot{color:var(--gold);}
+.lp-footer .copy{font-size:13px;}
+
+/* ANIMATIONS */
+.anim{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.anim.visible{opacity:1;transform:translateY(0);}
+.anim-d1{transition-delay:.1s;}.anim-d2{transition-delay:.2s;}.anim-d3{transition-delay:.3s;}.anim-d4{transition-delay:.4s;}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .partner-hero{padding:120px 24px 60px;}
+  .partner-benefits{grid-template-columns:1fr;}
+  .partner-cta-box{flex-direction:column;text-align:center;}
+  .showcase-inner{flex-direction:column-reverse;}
+  .lp-footer{flex-direction:column;gap:12px;text-align:center;}
+  .nav-links a:not(.cta-link){display:none;}
+}
+@media(max-width:640px){
+  .lp-nav{padding:12px 20px;}
+  .nav-links a{padding:6px 10px;font-size:13px;}
+  .lp-section{padding:64px 20px;}
+  .ep-phone{width:260px;}
+  .ep-screen{height:540px;}
+  .lang-switcher{margin-left:4px;padding-left:8px;}
+  .lang-btn{padding:3px 6px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="lp-nav">
+  <a href="index.html" class="logo">earnd<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.back">← Back to earnd</a>
+    <a href="#contact" class="cta-link" data-i18n="nav.cta">Become a partner</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('ca')">CA</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="partner-hero">
+  <div class="partner-hero-inner anim visible">
+    <span class="section-eyebrow" data-i18n="hero.eyebrow">For partners</span>
+    <h1 class="hero-h1" data-i18n-html="hero.h1">Get your brand in front of people <span class="it">who actually show up.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Earnd members are 22–35 year olds who train regularly, wear fitness wearables, and already eat at places like yours. They've earned their reward — and they'll walk through your door to use it.</p>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="lp-section lp-benefits">
+  <div class="lp-container">
+    <span class="section-eyebrow anim" data-i18n="benefits.eyebrow">Why join Earnd</span>
+    <h2 class="section-h2 anim" data-i18n-html="benefits.h2">Three reasons to <span class="it">get on board.</span></h2>
+    <div class="partner-benefits">
+      <div class="p-benefit anim anim-d1">
+        <div class="p-benefit-num">01</div>
+        <div class="p-benefit-t" data-i18n="b1.t">Reach motivated, health-conscious customers</div>
+        <div class="p-benefit-d" data-i18n="b1.d">Your exact audience — people in a healthy mindset who care what they eat after a workout.</div>
+      </div>
+      <div class="p-benefit anim anim-d2">
+        <div class="p-benefit-num">02</div>
+        <div class="p-benefit-t" data-i18n="b2.t">Drive genuine foot traffic &amp; new faces</div>
+        <div class="p-benefit-d" data-i18n="b2.d">Every reward is redeemed in person. Every redemption is a new customer choosing you.</div>
+      </div>
+      <div class="p-benefit anim anim-d3">
+        <div class="p-benefit-num">03</div>
+        <div class="p-benefit-t" data-i18n="b3.t">Free to join — zero risk, zero cost</div>
+        <div class="p-benefit-d" data-i18n="b3.d">No upfront fee, no commitment, no commission. You give only the discount you set, when someone redeems.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER PAGE SHOWCASE -->
+<section class="lp-section lp-showcase">
+  <div class="lp-container">
+    <span class="section-eyebrow anim" data-i18n="showcase.eyebrow">Partner page showcase</span>
+    <h2 class="section-h2 anim" data-i18n-html="showcase.h2">This is how your venue <span class="it">appears to users.</span></h2>
+    <p class="section-sub anim" data-i18n="showcase.sub">Every partner gets their own branded page in the app — a free channel to promote offers and drive foot traffic from verified fitness enthusiasts. Tap through the prototype below.</p>
+    <div class="showcase-inner">
+      <div class="showcase-phone-wrap anim anim-d1" id="showcase-phone-mount"></div>
+      <div class="showcase-features">
+        <div class="sc-feat anim anim-d1">
+          <div class="sc-feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+          <div><div class="sc-feat-t" data-i18n="sc.f1.t">Your own branded page</div><div class="sc-feat-d" data-i18n="sc.f1.d">Cover photo, logo, description — your venue presented exactly how you want.</div></div>
+        </div>
+        <div class="sc-feat anim anim-d2">
+          <div class="sc-feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8"/></svg></div>
+          <div><div class="sc-feat-t" data-i18n="sc.f2.t">Map with location pins</div><div class="sc-feat-d" data-i18n="sc.f2.d">Users see exactly where you are and how close — driving walk-in visits.</div></div>
+        </div>
+        <div class="sc-feat anim anim-d3">
+          <div class="sc-feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M9 12l3 3 7-7"/></svg></div>
+          <div><div class="sc-feat-t" data-i18n="sc.f3.t">Two offers, you control</div><div class="sc-feat-d" data-i18n="sc.f3.d">Set a discount and a freebie. Change them anytime — no lock-in, no commission.</div></div>
+        </div>
+        <div class="sc-feat anim anim-d4">
+          <div class="sc-feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <div><div class="sc-feat-t" data-i18n="sc.f4.t">Instant in-store redemption</div><div class="sc-feat-d" data-i18n="sc.f4.d">Users tap redeem, get a unique code + QR. Staff verify in seconds.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + CONTACT -->
+<section class="lp-section" id="contact" style="background:var(--white);">
+  <div class="lp-container">
+    <div class="partner-cta-box anim">
+      <div class="pcta-text">
+        <h3 data-i18n-html="cta.h3">Be one of the first venues <span class="it">on Earnd in Barcelona.</span></h3>
+        <p data-i18n="cta.p">We're hand-picking a small group of founding partners for launch — featured first, shaping the programme, front-of-mind with members from day one.</p>
+      </div>
+    </div>
+    <form class="partner-form anim" id="partner-form" onsubmit="handlePartnerForm(event)">
+      <input type="text" name="venue_name" placeholder="Venue name" required data-i18n-placeholder="form.venue">
+      <input type="text" name="contact_name" placeholder="Your name" required data-i18n-placeholder="form.name">
+      <input type="email" name="email" placeholder="Email address" required data-i18n-placeholder="form.email">
+      <input type="text" name="location" placeholder="Neighbourhood (e.g. Eixample, Born)" data-i18n-placeholder="form.location">
+      <textarea name="message" placeholder="Tell us about your venue (optional)" data-i18n-placeholder="form.message"></textarea>
+      <button type="submit" data-i18n="form.submit">Apply as founding partner</button>
+    </form>
+    <div class="partner-form-note anim" data-i18n="form.note">Free to join · No commitment · We'll be in touch within 48h</div>
+    <div id="partner-success" style="display:none;text-align:center;padding:32px;background:var(--sage-bg);border-radius:14px;margin-top:24px;">
+      <div style="font-size:32px;margin-bottom:8px;">&#10003;</div>
+      <h3 style="font-family:var(--serif);font-size:22px;color:var(--sage);" data-i18n="form.success.title">Application received!</h3>
+      <p style="font-size:14px;color:var(--soft);margin-top:6px;" data-i18n="form.success.desc">We'll review your venue and get back to you within 48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lp-footer">
+  <a href="index.html" class="logo">earnd<span class="dot">.</span></a>
+  <span class="copy">Workout-verified rewards · Barcelona · getearnd.app</span>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel" src="landing-phone.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('showcase-phone-mount')).render(<EarndPhone />);
+</script>
+
+<script>
+const TRANSLATIONS = {
+  en: {
+    'nav.back': '← Back to earnd',
+    'nav.cta': 'Become a partner',
+    'hero.eyebrow': 'For partners',
+    'hero.h1': 'Get your brand in front of people <span class="it">who actually show up.</span>',
+    'hero.sub': "Earnd members are 22–35 year olds who train regularly, wear fitness wearables, and already eat at places like yours. They've earned their reward — and they'll walk through your door to use it.",
+    'benefits.eyebrow': 'Why join Earnd',
+    'benefits.h2': 'Three reasons to <span class="it">get on board.</span>',
+    'b1.t': 'Reach motivated, health-conscious customers',
+    'b1.d': 'Your exact audience — people in a healthy mindset who care what they eat after a workout.',
+    'b2.t': 'Drive genuine foot traffic & new faces',
+    'b2.d': 'Every reward is redeemed in person. Every redemption is a new customer choosing you.',
+    'b3.t': 'Free to join — zero risk, zero cost',
+    'b3.d': 'No upfront fee, no commitment, no commission. You give only the discount you set, when someone redeems.',
+    'showcase.eyebrow': 'Partner page showcase',
+    'showcase.h2': 'This is how your venue <span class="it">appears to users.</span>',
+    'showcase.sub': "Every partner gets their own branded page in the app — a free channel to promote offers and drive foot traffic from verified fitness enthusiasts. Tap through the prototype below.",
+    'sc.f1.t': 'Your own branded page', 'sc.f1.d': 'Cover photo, logo, description — your venue presented exactly how you want.',
+    'sc.f2.t': 'Map with location pins', 'sc.f2.d': 'Users see exactly where you are and how close — driving walk-in visits.',
+    'sc.f3.t': 'Two offers, you control', 'sc.f3.d': 'Set a discount and a freebie. Change them anytime — no lock-in, no commission.',
+    'sc.f4.t': 'Instant in-store redemption', 'sc.f4.d': 'Users tap redeem, get a unique code + QR. Staff verify in seconds.',
+    'cta.h3': 'Be one of the first venues <span class="it">on Earnd in Barcelona.</span>',
+    'cta.p': "We're hand-picking a small group of founding partners for launch — featured first, shaping the programme, front-of-mind with members from day one.",
+    'form.venue': 'Venue name', 'form.name': 'Your name', 'form.email': 'Email address',
+    'form.location': 'Neighbourhood (e.g. Eixample, Born)', 'form.message': 'Tell us about your venue (optional)',
+    'form.submit': 'Apply as founding partner', 'form.submitting': 'Sending...',
+    'form.note': "Free to join · No commitment · We'll be in touch within 48h",
+    'form.success.title': 'Application received!', 'form.success.desc': "We'll review your venue and get back to you within 48 hours.",
+  },
+  es: {
+    'nav.back': '← Volver a earnd',
+    'nav.cta': 'Ser socio',
+    'hero.eyebrow': 'Para negocios',
+    'hero.h1': 'Pon tu marca delante de gente <span class="it">que de verdad aparece.</span>',
+    'hero.sub': 'Los miembros de Earnd tienen entre 22 y 35 años, entrenan regularmente, llevan wearables de fitness y ya comen en sitios como el tuyo. Se han ganado su recompensa — y pasarán por tu puerta para usarla.',
+    'benefits.eyebrow': 'Por qué unirse a Earnd',
+    'benefits.h2': 'Tres razones para <span class="it">subirse a bordo.</span>',
+    'b1.t': 'Llega a clientes motivados y saludables',
+    'b1.d': 'Tu público exacto — personas con mentalidad saludable que les importa qué comen después de entrenar.',
+    'b2.t': 'Genera tráfico real y caras nuevas',
+    'b2.d': 'Cada recompensa se canjea en persona. Cada canje es un nuevo cliente eligiéndote a ti.',
+    'b3.t': 'Gratis — sin riesgo, sin coste',
+    'b3.d': 'Sin cuota, sin compromiso, sin comisión. Solo das el descuento que tú decides, cuando alguien lo canjea.',
+    'showcase.eyebrow': 'Tu página de socio',
+    'showcase.h2': 'Así es como tu local <span class="it">aparece a los usuarios.</span>',
+    'showcase.sub': 'Cada socio tiene su propia página en la app — un canal gratis para promocionar ofertas y atraer tráfico de entusiastas del fitness verificados. Prueba el prototipo de abajo.',
+    'sc.f1.t': 'Tu propia página de marca', 'sc.f1.d': 'Foto de portada, logo, descripción — tu local presentado exactamente como quieras.',
+    'sc.f2.t': 'Mapa con ubicación', 'sc.f2.d': 'Los usuarios ven exactamente dónde estás y a qué distancia — impulsando visitas.',
+    'sc.f3.t': 'Dos ofertas, tú controlas', 'sc.f3.d': 'Pon un descuento y un regalo. Cámbialos cuando quieras — sin permanencia, sin comisión.',
+    'sc.f4.t': 'Canje instantáneo en tienda', 'sc.f4.d': 'Los usuarios tocan canjear, reciben un código único + QR. Tu personal lo verifica en segundos.',
+    'cta.h3': 'Sé uno de los primeros locales <span class="it">en Earnd en Barcelona.</span>',
+    'cta.p': 'Estamos seleccionando un pequeño grupo de socios fundadores para el lanzamiento — los primeros destacados, dando forma al programa, en la mente de los miembros desde el primer día.',
+    'form.venue': 'Nombre del local', 'form.name': 'Tu nombre', 'form.email': 'Correo electrónico',
+    'form.location': 'Barrio (ej. Eixample, Born)', 'form.message': 'Cuéntanos sobre tu local (opcional)',
+    'form.submit': 'Solicitar ser socio fundador', 'form.submitting': 'Enviando...',
+    'form.note': 'Gratis · Sin compromiso · Te contactaremos en 48h',
+    'form.success.title': '¡Solicitud recibida!', 'form.success.desc': 'Revisaremos tu local y te contactaremos en 48 horas.',
+  },
+  ca: {
+    'nav.back': '← Tornar a earnd',
+    'nav.cta': 'Ser soci',
+    'hero.eyebrow': 'Per a negocis',
+    'hero.h1': 'Posa la teva marca davant de gent <span class="it">que de veritat apareix.</span>',
+    'hero.sub': "Els membres d'Earnd tenen entre 22 i 35 anys, entrenen regularment, porten wearables de fitness i ja mengen a llocs com el teu. S'han guanyat la seva recompensa — i passaran per la teva porta per fer-la servir.",
+    'benefits.eyebrow': "Per què unir-se a Earnd",
+    'benefits.h2': 'Tres raons per <span class="it">pujar a bord.</span>',
+    'b1.t': 'Arriba a clients motivats i saludables',
+    'b1.d': "El teu públic exacte — persones amb mentalitat saludable que els importa què mengen després d'entrenar.",
+    'b2.t': 'Genera trànsit real i cares noves',
+    'b2.d': 'Cada recompensa es bescanvia en persona. Cada bescanvi és un nou client que et tria a tu.',
+    'b3.t': 'Gratis — sense risc, sense cost',
+    'b3.d': "Sense quota, sense compromís, sense comissió. Només dones el descompte que tu decideixes, quan algú el bescanvia.",
+    'showcase.eyebrow': 'La teva pàgina de soci',
+    'showcase.h2': 'Així és com el teu local <span class="it">apareix als usuaris.</span>',
+    'showcase.sub': "Cada soci té la seva pròpia pàgina a l'app — un canal gratis per promocionar ofertes i atraure trànsit d'entusiastes del fitness verificats. Prova el prototip de sota.",
+    'sc.f1.t': 'La teva pròpia pàgina de marca', 'sc.f1.d': 'Foto de portada, logo, descripció — el teu local presentat exactament com vulguis.',
+    'sc.f2.t': 'Mapa amb ubicació', 'sc.f2.d': "Els usuaris veuen exactament on ets i a quina distància — impulsant visites.",
+    'sc.f3.t': 'Dues ofertes, tu controles', 'sc.f3.d': 'Posa un descompte i un regal. Canvia\'ls quan vulguis — sense permanència, sense comissió.',
+    'sc.f4.t': 'Bescanvi instantani a botiga', 'sc.f4.d': 'Els usuaris toquen bescanviar, reben un codi únic + QR. El teu personal ho verifica en segons.',
+    'cta.h3': 'Sigues un dels primers locals <span class="it">a Earnd a Barcelona.</span>',
+    'cta.p': "Estem seleccionant un petit grup de socis fundadors pel llançament — els primers destacats, donant forma al programa, al cap dels membres des del primer dia.",
+    'form.venue': 'Nom del local', 'form.name': 'El teu nom', 'form.email': 'Correu electrònic',
+    'form.location': 'Barri (ex. Eixample, Born)', 'form.message': 'Explica\'ns sobre el teu local (opcional)',
+    'form.submit': 'Sol·licitar ser soci fundador', 'form.submitting': 'Enviant...',
+    'form.note': 'Gratis · Sense compromís · Et contactarem en 48h',
+    'form.success.title': 'Sol·licitud rebuda!', 'form.success.desc': 'Revisarem el teu local i et contactarem en 48 hores.',
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang));
+  const t = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (t[k]) el.textContent = t[k]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { const k = el.getAttribute('data-i18n-html'); if (t[k]) el.innerHTML = t[k]; });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const k = el.getAttribute('data-i18n-placeholder'); if (t[k]) el.placeholder = t[k]; });
+}
+
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8PgajEEsOvsOaIj0BqSG75gZbtSUCWV4IN91QvqkBjsIIn7iwmgmf4V9rGwaAu0/exec';
+
+function handlePartnerForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button');
+  const t = TRANSLATIONS[currentLang];
+  btn.disabled = true;
+  btn.textContent = t['form.submitting'];
+
+  const data = {
+    type: 'partner',
+    venue_name: form.venue_name.value.trim(),
+    contact_name: form.contact_name.value.trim(),
+    email: form.email.value.trim(),
+    location: form.location.value.trim(),
+    message: form.message.value.trim(),
+    language: currentLang,
+    timestamp: new Date().toISOString()
+  };
+
+  fetch(APPS_SCRIPT_URL, { method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'text/plain;charset=utf-8' } })
+    .then(() => showPartnerSuccess()).catch(() => showPartnerSuccess());
+}
+
+function showPartnerSuccess() {
+  document.getElementById('partner-form').style.display = 'none';
+  document.querySelector('.partner-form-note').style.display = 'none';
+  document.getElementById('partner-success').style.display = 'block';
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('.lp-nav').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+</script>
+</body>
+</html>

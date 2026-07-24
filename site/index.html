@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>earnd. — Workout-Verified Rewards</title>
+<meta name="description" content="Connect your fitness wearable, complete real workouts, and unlock discounts at Barcelona's best healthy restaurants and wellness brands.">
+<meta property="og:title" content="earnd. — Workout-Verified Rewards">
+<meta property="og:description" content="Work out. Get verified. Get earnd. Barcelona's fitness rewards app launching Q4 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getearnd.app">
+<link rel="canonical" href="https://getearnd.app">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & BASE ============ */
+:root {
+  --cream: #f3eee2; --white: #faf7f0; --surface: #ebe5d4; --surface2: #e1dac5;
+  --hair: #d4ccb6; --hair2: #b7ad93;
+  --text: #1a2419; --soft: #3a443a; --muted: #6e6a58; --faint: #9a9684;
+  --sage: #2d5a3f; --sage-deep: #1a3d28; --sage-bg: #dde3d2;
+  --gold: #9a7128; --gold-deep: #6e4f17; --gold-bg: #ece0c2;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --body: 'Outfit', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased;}
+
+/* ============ NAV ============ */
+.lp-nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(243,238,226,0.82);border-bottom:1px solid rgba(45,90,63,0.08);display:flex;justify-content:space-between;align-items:center;padding:14px 48px;transition:box-shadow .3s;}
+.lp-nav.scrolled{box-shadow:0 2px 20px rgba(40,40,20,0.08);}
+.lp-nav .logo{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--sage);letter-spacing:-0.03em;text-decoration:none;}
+.lp-nav .logo .dot{color:var(--gold);}
+.nav-links{display:flex;gap:8px;align-items:center;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--soft);text-decoration:none;padding:8px 16px;border-radius:999px;transition:all .15s;}
+.nav-links a:hover{color:var(--sage);background:rgba(45,90,63,0.06);}
+.nav-links .cta-link{background:var(--sage);color:var(--cream);font-weight:600;}
+.nav-links .cta-link:hover{background:var(--sage-deep);color:var(--cream);}
+
+/* ---- Language switcher ---- */
+.lang-switcher{display:flex;gap:4px;align-items:center;margin-left:8px;border-left:1px solid var(--hair);padding-left:12px;}
+.lang-btn{font-size:12px;font-weight:600;color:var(--muted);background:none;border:1px solid transparent;border-radius:6px;padding:4px 8px;cursor:pointer;transition:all .15s;letter-spacing:0.02em;}
+.lang-btn:hover{color:var(--sage);border-color:var(--hair);}
+.lang-btn.active{color:var(--sage);background:var(--sage-bg);border-color:rgba(45,90,63,0.15);}
+
+/* ============ HERO ============ */
+.lp-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 48px 80px;gap:72px;}
+.hero-text{max-width:560px;}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--sage);}
+.hero-h1{font-family:var(--serif);font-size:clamp(40px,5.5vw,64px);line-height:1.02;letter-spacing:-0.02em;color:var(--text);margin-top:16px;}
+.hero-h1 .it{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:17px;line-height:1.55;color:var(--soft);margin-top:20px;max-width:480px;text-wrap:pretty;}
+.hero-sub b{color:var(--sage);font-weight:600;}
+
+/* ============ WAITLIST FORM (shared) ============ */
+.wl-form{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
+.wl-form-row{display:flex;gap:10px;}
+.wl-form input{flex:1;padding:14px 20px;border:1px solid var(--hair);border-radius:14px;font-family:var(--body);font-size:15px;background:var(--white);color:var(--text);outline:none;transition:border .2s;}
+.wl-form input:focus{border-color:var(--sage);}
+.wl-form input::placeholder{color:var(--faint);}
+.wl-form button[type="submit"]{padding:14px 28px;background:var(--sage);color:var(--cream);border:none;border-radius:14px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.wl-form button[type="submit"]:hover{background:var(--sage-deep);}
+.wl-form button[type="submit"]:disabled{opacity:0.7;cursor:not-allowed;}
+.hero-note{display:block;font-size:12px;color:var(--muted);margin-top:12px;letter-spacing:0.02em;}
+.hero-phone{flex-shrink:0;}
+.wl-success{display:none;background:var(--sage-bg);border:1px solid rgba(45,90,63,0.2);border-radius:14px;padding:20px;text-align:center;margin-top:28px;}
+.wl-success.show{display:block;}
+.wl-success .check{font-size:32px;margin-bottom:8px;}
+.wl-success h3{font-family:var(--serif);font-size:22px;color:var(--sage);}
+.wl-success p{font-size:14px;color:var(--soft);margin-top:6px;}
+
+/* ---- Optional questionnaire ---- */
+.wl-questionnaire{display:none;flex-direction:column;gap:14px;margin-top:16px;padding:20px;background:var(--white);border:1px solid var(--hair);border-radius:14px;}
+.wl-questionnaire.show{display:flex;}
+.wl-q-title{font-size:14px;font-weight:600;color:var(--text);}
+.wl-q-subtitle{font-size:13px;color:var(--muted);margin-top:-8px;}
+.wl-q-group{display:flex;flex-direction:column;gap:6px;}
+.wl-q-group label{font-size:13px;font-weight:500;color:var(--soft);}
+.wl-q-group .q-options{display:flex;flex-wrap:wrap;gap:6px;}
+.q-opt{font-size:13px;font-weight:500;color:var(--muted);background:var(--cream);border:1px solid var(--hair);border-radius:999px;padding:6px 14px;cursor:pointer;transition:all .15s;}
+.q-opt:hover{border-color:var(--sage);color:var(--sage);}
+.q-opt.selected{background:var(--sage);color:var(--cream);border-color:var(--sage);}
+.q-input{padding:10px 14px;border:1px solid var(--hair);border-radius:10px;font-family:var(--body);font-size:13px;background:#fff;color:var(--text);outline:none;width:100%;}
+.q-input:focus{border-color:var(--sage);}
+.wl-q-submit{padding:12px 24px;background:var(--gold);color:#fff;border:none;border-radius:12px;font-family:var(--body);font-size:14px;font-weight:600;cursor:pointer;transition:background .15s;align-self:flex-start;}
+.wl-q-submit:hover{background:var(--gold-deep);}
+.wl-q-skip{font-size:13px;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;margin-left:12px;}
+
+/* ============ SECTION SHARED ============ */
+.lp-section{padding:100px 48px;position:relative;}
+.lp-container{max-width:1100px;margin:0 auto;}
+.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:14px;}
+.section-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);line-height:1.06;letter-spacing:-0.015em;color:var(--text);}
+.section-h2 .it{font-style:italic;color:var(--gold);}
+.section-sub{font-size:17px;line-height:1.55;color:var(--soft);margin-top:14px;max-width:580px;text-wrap:pretty;}
+
+/* ============ HOW IT WORKS ============ */
+.lp-how{background:var(--white);}
+.how-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;margin-top:56px;align-items:start;}
+.how-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
+.how-medallion{position:relative;width:110px;height:110px;}
+.how-medallion .ring{position:absolute;inset:0;width:100%;height:100%;}
+.how-medallion .disc{position:absolute;inset:12px;border-radius:50%;background:radial-gradient(circle at 38% 28%,#4a8260,#224b31 64%,#173a25);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 2px 5px rgba(255,255,255,0.22),inset 0 -7px 14px rgba(0,0,0,0.3),0 7px 16px rgba(26,61,40,0.26);}
+.how-medallion .disc svg{width:36px;height:36px;color:#fbf8ef;stroke-width:1.7;}
+.how-num{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold);margin-top:18px;}
+.how-title{font-size:18px;font-weight:600;color:var(--text);margin-top:8px;line-height:1.2;}
+.how-desc{font-size:14px;color:var(--muted);line-height:1.5;margin-top:8px;max-width:240px;}
+.how-arrow{align-self:start;margin-top:48px;color:var(--hair2);padding:0 8px;}
+.how-phone{width:200px;margin-top:20px;background:#0e120f;border-radius:18px;padding:3px;box-shadow:0 10px 30px rgba(40,40,20,0.18);}
+.how-phone-screen{background:var(--cream);border-radius:15px;overflow:hidden;font-family:var(--body);height:427px;display:flex;flex-direction:column;}
+.how-phone-sbar{display:flex;justify-content:space-between;align-items:center;padding:5px 10px 2px;font-size:7px;font-weight:600;color:var(--text);}
+.how-phone-body{padding:4px 10px 8px;flex:1;overflow:hidden;}
+.how-phone .hp-title{font-size:10px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.how-phone .hp-sub{font-size:7.5px;color:var(--muted);margin-bottom:8px;line-height:1.3;}
+.how-phone .hp-card{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:7px 8px;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+.how-phone .hp-card-icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+.how-phone .hp-card-text{flex:1;}
+.how-phone .hp-card-t{font-size:8px;font-weight:600;color:var(--text);}
+.how-phone .hp-card-d{font-size:6.5px;color:var(--muted);margin-top:1px;}
+.how-phone .hp-check{color:var(--sage);font-weight:700;font-size:9px;}
+.how-phone .hp-ring-wrap{display:flex;align-items:center;gap:8px;background:var(--sage-bg);border:1px solid var(--hair);border-radius:10px;padding:8px;margin-bottom:6px;}
+.how-phone .hp-ring{width:42px;height:42px;flex-shrink:0;}
+.how-phone .hp-ring-info{flex:1;}
+.how-phone .hp-ring-k{font-size:6px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);}
+.how-phone .hp-ring-t{font-size:8px;font-weight:600;color:var(--text);margin-top:2px;line-height:1.2;}
+.how-phone .hp-pill{display:inline-block;font-size:6.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 6px;border-radius:99px;}
+.how-phone .hp-pill.green{background:var(--sage-bg);color:var(--sage);}
+.how-phone .hp-pill.gold{background:#ece0c2;color:#6e4f17;}
+.how-phone .hp-bar{height:4px;border-radius:2px;background:rgba(45,90,63,0.15);margin-top:4px;margin-bottom:2px;position:relative;overflow:hidden;}
+.how-phone .hp-bar-fill{height:100%;border-radius:2px;background:var(--sage);}
+.how-phone .hp-reward-card{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:7px 8px;margin-bottom:5px;text-align:center;}
+.how-phone .hp-reward-big{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--sage);line-height:1;}
+.how-phone .hp-reward-venue{font-size:7.5px;font-weight:600;color:var(--text);margin-top:3px;}
+.how-phone .hp-reward-offer{font-size:6.5px;color:var(--muted);margin-top:2px;}
+.how-phone .hp-btn{display:block;text-align:center;font-size:7px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;background:var(--sage);padding:5px 0;border-radius:6px;margin-top:6px;}
+.how-phone .hp-confetti{text-align:center;font-size:16px;margin-bottom:4px;}
+.how-phone .hp-logo-bar{display:flex;align-items:center;justify-content:space-between;padding:4px 10px 2px;}
+.how-phone .hp-logo-bar .hp-logo{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--sage);letter-spacing:-0.03em;}
+.how-phone .hp-logo-bar .hp-notif{width:16px;height:16px;border-radius:50%;background:var(--sage-bg);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--sage);}
+.how-phone .hp-tab-bar{display:flex;justify-content:space-around;align-items:center;padding:6px 4px 10px;border-top:1px solid var(--hair);background:var(--cream);margin-top:auto;flex-shrink:0;}
+.how-phone .hp-tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:6px;color:var(--faint);font-weight:500;cursor:pointer;}
+.how-phone .hp-tab.active{color:var(--sage);}
+.how-phone .hp-tab svg{width:14px;height:14px;opacity:0.6;}
+.how-phone .hp-tab.active svg{opacity:1;}
+.how-phone .hp-home-bar{width:36%;height:3px;background:#444;border-radius:2px;margin:3px auto 2px;}
+
+/* ============ WHO WE ARE / MANIFESTO ============ */
+.lp-manifesto{background:var(--sage-deep);color:#f1ecdf;}
+.manifesto-inner{max-width:720px;margin:0 auto;text-align:center;}
+.manifesto-sign{margin-top:32px;font-family:var(--serif);font-style:italic;font-size:28px;color:rgba(241,236,223,0.7);letter-spacing:-0.02em;}
+.manifesto-eyebrow{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(241,236,223,0.5);margin-bottom:28px;}
+.manifesto-text{font-family:var(--body);font-size:22px;line-height:1.55;color:#f1ecdf;letter-spacing:-0.01em;}
+.manifesto-text .highlight{color:#e8d8a8;font-style:italic;}
+
+/* ============ FOR PARTNERS ============ */
+.lp-partners{background:var(--sage-deep);color:var(--cream);}
+.lp-partners .section-eyebrow{color:rgba(243,238,226,0.5);}
+.lp-partners .section-h2{color:var(--cream);}
+.lp-partners .section-h2 .it{color:#e8d8a8;}
+.lp-partners .section-sub{color:rgba(243,238,226,0.7);}
+.partner-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.p-benefit{background:rgba(243,238,226,0.06);border:1px solid rgba(243,238,226,0.12);border-radius:18px;padding:28px 24px;}
+.p-benefit-num{font-family:var(--serif);font-style:italic;font-size:28px;color:rgba(243,238,226,0.3);}
+.p-benefit-t{font-size:18px;font-weight:600;color:var(--cream);margin-top:12px;line-height:1.25;}
+.p-benefit-d{font-size:14px;color:rgba(243,238,226,0.6);line-height:1.55;margin-top:8px;}
+.partner-cta-box{margin-top:48px;background:rgba(243,238,226,0.08);border:1px solid rgba(243,238,226,0.15);border-radius:20px;padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:40px;}
+.pcta-text h3{font-family:var(--serif);font-size:28px;color:var(--cream);line-height:1.1;}
+.pcta-text h3 .it{font-style:italic;color:#e8d8a8;}
+.pcta-text p{font-size:14px;color:rgba(243,238,226,0.6);margin-top:10px;line-height:1.5;}
+.pcta-btn{padding:16px 32px;background:var(--cream);color:var(--sage-deep);border:none;border-radius:14px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .15s;}
+.pcta-btn:hover{transform:translateY(-2px);}
+
+/* ============ WAITLIST SECTION ============ */
+.lp-waitlist{background:var(--white);text-align:center;}
+.lp-waitlist .section-eyebrow,.lp-waitlist .section-h2,.lp-waitlist .section-sub{text-align:center;}
+.lp-waitlist .section-sub{margin:14px auto 0;max-width:500px;}
+.lp-waitlist .wl-form{max-width:460px;margin:32px auto 0;align-items:center;}
+.lp-waitlist .wl-form-row{width:100%;}
+.wl2-note{font-size:12px;color:var(--muted);margin-top:14px;}
+
+/* ============ FOOTER ============ */
+.lp-footer{background:var(--sage-deep);color:rgba(243,238,226,0.5);padding:40px 48px;display:flex;justify-content:space-between;align-items:center;}
+.lp-footer .logo{font-family:var(--serif);font-style:italic;font-size:24px;color:rgba(243,238,226,0.7);letter-spacing:-0.03em;}
+.lp-footer .logo .dot{color:var(--gold);}
+.lp-footer .copy{font-size:13px;}
+.footer-partner-link{font-size:14px;font-weight:600;color:rgba(243,238,226,0.7);text-decoration:none;padding:10px 24px;border:1px solid rgba(243,238,226,0.2);border-radius:999px;transition:all .15s;}
+.footer-partner-link:hover{color:var(--cream);border-color:rgba(243,238,226,0.5);background:rgba(243,238,226,0.08);}
+
+/* ============ PHONE SHELL ============ */
+.ep-phone{width:290px;background:#0e120f;border-radius:44px;padding:7px;box-shadow:0 40px 100px rgba(0,0,0,0.25),0 0 0 1px rgba(255,255,255,0.05);position:relative;flex-shrink:0;}
+.ep-notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:95px;height:26px;background:#000;border-radius:999px;z-index:20;}
+.ep-screen{background:var(--cream);border-radius:38px;height:600px;overflow:hidden;position:relative;}
+.ep-home-bar{width:100px;height:4px;background:rgba(255,255,255,0.15);border-radius:999px;margin:6px auto 4px;}
+.ep-sbar{position:absolute;top:0;left:0;right:0;height:48px;display:flex;justify-content:space-between;align-items:center;padding:14px 28px 0;color:var(--text);font-size:14px;font-weight:600;z-index:10;}
+.ep-sbar-r{display:flex;gap:5px;align-items:center;}
+.ep-content{position:absolute;top:48px;left:0;right:0;bottom:0;animation:epFade .28s ease;}
+@keyframes epFade{from{opacity:0;transform:translateX(24px);}to{opacity:1;transform:translateX(0);}}
+
+/* ---- Browse ---- */
+.ep-browse{display:flex;flex-direction:column;height:100%;padding:6px 16px 12px;}
+.ep-browse-head{margin-bottom:6px;}
+.ep-browse-logo{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--sage);letter-spacing:-0.03em;}
+.ep-browse-title{font-size:17px;font-weight:600;color:var(--text);margin-top:4px;}
+.ep-chips{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;flex-shrink:0;}
+.ep-chip{font-family:var(--body);font-size:11px;font-weight:600;color:var(--muted);background:var(--white);border:1px solid var(--hair);border-radius:999px;padding:5px 13px;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.ep-chip.active{background:var(--sage);color:var(--cream);border-color:var(--sage);}
+.ep-list{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px;}
+.ep-card{display:flex;align-items:center;gap:12px;padding:12px;background:var(--white);border:1px solid var(--hair);border-radius:14px;cursor:pointer;transition:border-color .15s;}
+.ep-card:hover{border-color:var(--sage);}
+.ep-card-logo{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;}
+.ep-card-info{flex:1;min-width:0;}
+.ep-card-name{font-size:14px;font-weight:600;color:var(--text);}
+.ep-card-row{display:flex;gap:8px;align-items:center;margin-top:3px;}
+.ep-card-cat{font-size:10px;font-weight:600;letter-spacing:0.04em;color:var(--sage);background:var(--sage-bg);padding:2px 7px;border-radius:999px;}
+.ep-card-dist{font-size:11px;color:var(--muted);}
+.ep-card-badges{display:flex;gap:5px;margin-top:5px;}
+.ep-mini-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:0.02em;}
+.ep-mini-badge.sage{background:var(--sage-bg);color:var(--sage);}
+.ep-mini-badge.gold{background:var(--gold-bg);color:var(--gold-deep);}
+.ep-card-chevron{flex-shrink:0;margin-left:auto;}
+
+/* ---- Detail ---- */
+.ep-detail{height:100%;overflow-y:auto;}
+.ep-detail-cover{height:90px;position:relative;}
+.ep-back{position:absolute;top:10px;left:12px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.25);backdrop-filter:blur(4px);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;z-index:5;}
+.ep-back-dark{background:rgba(45,90,63,0.12);color:var(--sage);position:relative;top:0;left:0;margin:0 0 8px;}
+.ep-detail-logo-chip{position:absolute;left:16px;bottom:-18px;width:42px;height:42px;border-radius:12px;border:2px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(40,40,20,0.12);}
+.ep-detail-body{padding:22px 16px 16px;}
+.ep-detail-name{font-family:var(--serif);font-size:22px;color:var(--text);letter-spacing:-0.01em;}
+.ep-detail-meta{display:flex;gap:10px;align-items:center;margin-top:7px;}
+.ep-tag{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--sage);background:var(--sage-bg);padding:3px 9px;border-radius:999px;}
+.ep-detail-dist{font-size:11px;color:var(--muted);}
+.ep-detail-dist strong{color:var(--soft);}
+.ep-detail-addr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-top:6px;}
+.ep-map{height:52px;margin-top:12px;border-radius:12px;background:repeating-linear-gradient(90deg,rgba(0,0,0,0.04),rgba(0,0,0,0.04) 1px,transparent 1px,transparent 18px),repeating-linear-gradient(0deg,rgba(0,0,0,0.04),rgba(0,0,0,0.04) 1px,transparent 1px,transparent 18px),#e7e1d0;border:1px solid var(--hair);position:relative;}
+.ep-map-pin{position:absolute;width:12px;height:12px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,0.2);}
+.ep-map-pin-you{background:var(--gold) !important;}
+.ep-section-title{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px;}
+.ep-reward{border:1px solid var(--hair);border-radius:13px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;background:var(--white);}
+.ep-reward-badge{width:36px;height:36px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:.9;}
+.ep-reward-badge.sage{background:var(--sage-bg);color:var(--sage);}
+.ep-reward-badge.gold{background:var(--gold-bg);color:var(--gold-deep);}
+.ep-rb-big{font-family:var(--serif);font-style:italic;font-size:16px;}
+.ep-rb-sm{font-size:7px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
+.ep-reward-info{flex:1;}
+.ep-reward-title{font-size:13px;font-weight:600;color:var(--text);}
+.ep-reward-cond{font-size:10px;color:var(--muted);margin-top:2px;}
+.ep-redeem-btn{width:30px;height:30px;border-radius:50%;background:var(--sage);color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:transform .15s;}
+.ep-redeem-btn:hover{transform:scale(1.1);}
+.ep-detail-about{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* ---- Redeem ---- */
+.ep-redeem-screen{height:100%;padding:14px 20px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,var(--sage-bg) 0%,var(--cream) 50%);}
+.ep-redeem-check-circle{width:72px;height:72px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;margin-top:20px;animation:epPop .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 10px 28px rgba(45,90,63,0.25);}
+@keyframes epPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.ep-redeem-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-top:14px;}
+.ep-redeem-heading{font-family:var(--serif);font-size:22px;color:var(--text);margin-top:6px;}
+.ep-redeem-card{background:var(--white);border:1px solid var(--hair);border-radius:18px;padding:20px;text-align:center;width:100%;margin-top:16px;box-shadow:0 8px 24px rgba(40,40,20,0.06);}
+.ep-redeem-partner{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);}
+.ep-redeem-amount{font-family:var(--serif);font-style:italic;font-size:44px;line-height:1;margin-top:8px;}
+.ep-redeem-amount.sage{color:var(--sage);}
+.ep-redeem-amount.gold{color:var(--gold);}
+.ep-redeem-desc{font-size:13px;color:var(--soft);margin-top:4px;}
+.ep-redeem-code-label{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:14px;}
+.ep-redeem-code{font-family:var(--mono);font-size:20px;font-weight:600;color:var(--text);margin-top:4px;letter-spacing:0.06em;}
+.ep-qr{width:100px;height:100px;margin:12px auto;display:grid;grid-template-columns:repeat(11,1fr);gap:1px;padding:6px;background:#fff;border-radius:8px;border:1px solid var(--hair);}
+.ep-qr div.on{background:var(--text);border-radius:1px;}
+.ep-qr div.off{background:#fff;}
+.ep-redeem-expiry{font-size:10px;color:var(--muted);margin-top:6px;}
+.ep-done-btn{margin-top:auto;width:100%;padding:14px;background:var(--sage);color:var(--cream);border:none;border-radius:14px;font-family:var(--body);font-size:14px;font-weight:600;cursor:pointer;margin-bottom:8px;}
+
+/* ============ HERO DASHBOARD PHONE ============ */
+.ep-dash{display:flex;flex-direction:column;height:100%;padding:6px 16px 0;overflow-y:auto;}
+.ep-dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.ep-dash-logo{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--sage);letter-spacing:-0.03em;}
+.ep-dash-greet{font-size:15px;font-weight:600;color:var(--text);margin-top:2px;}
+.ep-dash-avatar{width:36px;height:36px;border-radius:50%;background:var(--sage-bg);border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--sage);}
+.ep-dash-ring-card{background:var(--sage-bg);border:1px solid var(--hair);border-radius:18px;padding:16px;display:flex;align-items:center;gap:14px;}
+.ep-dash-ring{width:90px;height:90px;position:relative;flex-shrink:0;}
+.ep-dash-ring svg{width:100%;height:100%;}
+.ep-dash-ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ep-ring-num{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--text);line-height:1;}
+.ep-ring-of{font-size:10px;color:var(--muted);}
+.ep-dash-ring-info{flex:1;}
+.ep-ring-kicker{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);}
+.ep-ring-title{font-size:14px;font-weight:600;color:var(--text);margin-top:4px;line-height:1.25;}
+.ep-ring-meta{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;}
+.ep-dash-streak{margin-top:10px;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--white);border:1px solid var(--hair);border-radius:12px;}
+.ep-streak-label{font-size:12px;color:var(--muted);}
+.ep-streak-val{font-size:14px;font-weight:700;color:var(--gold);}
+.ep-dash-section-title{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px;}
+.ep-dash-workout{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--white);border:1px solid var(--hair);border-radius:12px;margin-bottom:6px;}
+.ep-wo-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.ep-wo-info{flex:1;}
+.ep-wo-name{font-size:13px;font-weight:600;color:var(--text);}
+.ep-wo-meta{font-size:10px;color:var(--muted);margin-top:2px;}
+.ep-wo-check{color:var(--sage);font-weight:700;font-size:14px;}
+.ep-dash-reward-peek{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--white);border:1px solid var(--hair);border-radius:12px;margin-bottom:6px;}
+.ep-rp-logo{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;flex-shrink:0;}
+.ep-rp-info{flex:1;}
+.ep-rp-name{font-size:13px;font-weight:600;color:var(--text);}
+.ep-rp-offer{font-size:10px;color:var(--muted);margin-top:1px;}
+.ep-rp-dist{font-size:11px;color:var(--muted);font-weight:500;}
+.ep-dash-nav{position:sticky;bottom:0;left:0;right:0;background:var(--cream);border-top:1px solid var(--hair);display:flex;justify-content:space-around;padding:10px 0 14px;margin-top:auto;}
+.ep-nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--faint);font-weight:500;cursor:pointer;}
+.ep-nav-item.active{color:var(--sage);}
+.ep-nav-item svg{width:20px;height:20px;opacity:0.65;}
+.ep-nav-item.active svg{opacity:1;}
+
+/* ============ SCROLL ANIMATIONS ============ */
+.anim{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.anim.visible{opacity:1;transform:translateY(0);}
+.anim-d1{transition-delay:.1s;}.anim-d2{transition-delay:.2s;}.anim-d3{transition-delay:.3s;}.anim-d4{transition-delay:.4s;}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:960px){
+  .lp-hero{flex-direction:column;text-align:center;gap:48px;padding:120px 24px 60px;}
+  .hero-text{max-width:none;}
+  .hero-sub{margin-left:auto;margin-right:auto;}
+  .wl-form{max-width:420px;margin-left:auto;margin-right:auto;}
+  .how-grid{grid-template-columns:1fr;gap:32px;}
+  .how-arrow{display:none;}
+  .partner-benefits{grid-template-columns:1fr;}
+  .partner-cta-box{flex-direction:column;text-align:center;}
+  .lp-footer{flex-direction:column;gap:12px;text-align:center;}
+  .nav-links a:not(.cta-link){display:none;}
+}
+@media(max-width:640px){
+  .lp-nav{padding:12px 20px;}
+  .nav-links a{padding:6px 10px;font-size:13px;}
+  .lp-section{padding:64px 20px;}
+  .ep-phone{width:260px;}
+  .ep-screen{height:540px;}
+  .wl-form-row{flex-direction:column;}
+  .lang-switcher{margin-left:4px;padding-left:8px;}
+  .lang-btn{padding:3px 6px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="lp-nav">
+  <a href="#" class="logo">earnd<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="#how" data-i18n="nav.how">How it works</a>
+    <a href="#waitlist" class="cta-link" data-i18n="nav.cta">Join waitlist</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('ca')">CA</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="lp-hero" id="hero">
+  <div class="hero-text anim visible">
+    <span class="hero-eyebrow" data-i18n="hero.eyebrow">Barcelona's fitness rewards app</span>
+    <h1 class="hero-h1" data-i18n-html="hero.h1">Work out. Get verified.<br><span class="it">Get earnd.</span></h1>
+    <p class="hero-sub" data-i18n-html="hero.sub">Connect your fitness wearable, complete real workouts, and unlock <b>discounts at Barcelona's best healthy restaurants</b> and wellness brands. No faking it — every reward is earned.</p>
+    <form class="wl-form" id="hero-form" onsubmit="handleWaitlist(event, 'hero')">
+      <div class="wl-form-row">
+        <input type="text" name="name" placeholder="Your name" required data-i18n-placeholder="form.name">
+        <input type="email" name="email" placeholder="Enter your email" required data-i18n-placeholder="form.email">
+      </div>
+      <button type="submit" data-i18n="form.submit">Join the waitlist</button>
+    </form>
+    <div class="wl-success" id="hero-success">
+      <div class="check">&#10003;</div>
+      <h3 data-i18n="form.success.title">You're on the list!</h3>
+      <p data-i18n="form.success.desc">We'll let you know when earnd launches in Barcelona.</p>
+    </div>
+    <div class="wl-questionnaire" id="hero-questionnaire">
+      <div class="wl-q-title" data-i18n="q.title">Quick questions (optional)</div>
+      <div class="wl-q-subtitle" data-i18n="q.subtitle">Help us build the best experience for you</div>
+      <div class="wl-q-group">
+        <label data-i18n="q.q1">How many times a week do you exercise?</label>
+        <div class="q-options" data-q="exercise_frequency">
+          <button type="button" class="q-opt" data-val="0-1">0–1</button>
+          <button type="button" class="q-opt" data-val="2-3">2–3</button>
+          <button type="button" class="q-opt" data-val="4-5">4–5</button>
+          <button type="button" class="q-opt" data-val="6+">6+</button>
+        </div>
+      </div>
+      <div class="wl-q-group">
+        <label data-i18n="q.q2">Would you complete 5 days of exercise to earn a reward?</label>
+        <div class="q-options" data-q="five_day_commitment">
+          <button type="button" class="q-opt" data-val="yes" data-i18n="q.yes">Yes</button>
+          <button type="button" class="q-opt" data-val="maybe" data-i18n="q.maybe">Maybe</button>
+          <button type="button" class="q-opt" data-val="no" data-i18n="q.no">No</button>
+        </div>
+      </div>
+      <div class="wl-q-group">
+        <label data-i18n="q.q3">What value of reward would motivate you to keep going?</label>
+        <div class="q-options" data-q="reward_value">
+          <button type="button" class="q-opt" data-val="10-15%">10–15%</button>
+          <button type="button" class="q-opt" data-val="20-25%">20–25%</button>
+          <button type="button" class="q-opt" data-val="30%+">30%+</button>
+          <button type="button" class="q-opt" data-val="freebies" data-i18n="q.freebies">Freebies</button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+        <button type="button" class="wl-q-submit" onclick="submitQuestionnaire()" data-i18n="q.send">Send answers</button>
+        <button type="button" class="wl-q-skip" onclick="skipQuestionnaire()" data-i18n="q.skip">Skip</button>
+      </div>
+    </div>
+    <span class="hero-note" data-i18n="hero.note">Free · No spam · Launching Q4 2026 in Barcelona</span>
+  </div>
+  <div class="hero-phone" id="hero-phone-mount"></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="lp-section lp-how" id="how">
+  <div class="lp-container">
+    <span class="section-eyebrow anim" data-i18n="how.eyebrow">How Earnd works</span>
+    <h2 class="section-h2 anim" data-i18n-html="how.h2">Effort in, <span class="it">rewards out.</span></h2>
+    <div class="how-grid">
+      <div class="how-step anim anim-d1">
+        <div class="how-medallion">
+          <svg class="ring" viewBox="0 0 100 100"><defs><linearGradient id="r1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f7755"/><stop offset="1" stop-color="#7fae7e"/></linearGradient></defs><circle cx="50" cy="50" r="45" fill="none" stroke="rgba(45,90,63,0.16)" stroke-width="5"/><circle cx="50" cy="50" r="45" fill="none" stroke="url(#r1)" stroke-width="5" stroke-linecap="round" stroke-dasharray="94 283" transform="rotate(-90 50 50)"/></svg>
+          <div class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg></div>
+        </div>
+        <div class="how-num">01</div>
+        <div class="how-title" data-i18n="how.s1.title">Work out</div>
+        <div class="how-desc" data-i18n="how.s1.desc">Running, gym, padel, yoga — any real workout tracked by your wearable.</div>
+        <div class="how-phone">
+          <div class="how-phone-screen">
+            <div class="how-phone-sbar"><span>9:41</span><span>···</span></div>
+            <div class="hp-logo-bar"><span class="hp-logo">earnd.</span><span class="hp-notif">🔔</span></div>
+            <div class="how-phone-body">
+              <div class="hp-title">Today's workout</div>
+              <div class="hp-sub">Morning Run · In progress</div>
+              <div style="text-align:center;margin:6px 0;">
+                <svg width="50" height="50" viewBox="0 0 120 120"><circle cx="60" cy="60" r="48" fill="none" stroke="rgba(45,90,63,0.15)" stroke-width="8"/><circle cx="60" cy="60" r="48" fill="none" stroke="#2d5a3f" stroke-width="8" stroke-linecap="round" stroke-dasharray="180 301" transform="rotate(-90 60 60)"/><text x="60" y="56" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="28" fill="#1a2419">24</text><text x="60" y="72" text-anchor="middle" font-size="10" fill="#6e6a58">min</text></svg>
+              </div>
+              <div class="hp-card">
+                <div class="hp-card-icon" style="background:#dde3d2;color:#2d5a3f;">❤️</div>
+                <div class="hp-card-text"><div class="hp-card-t">142 bpm avg</div><div class="hp-card-d">Heart rate · Zone 3</div></div>
+              </div>
+              <div class="hp-card">
+                <div class="hp-card-icon" style="background:#dde3d2;color:#2d5a3f;">🏃</div>
+                <div class="hp-card-text"><div class="hp-card-t">4.2 km</div><div class="hp-card-d">Distance · 5'42" /km</div></div>
+              </div>
+              <div class="hp-card">
+                <div class="hp-card-icon" style="background:#ece0c2;color:#6e4f17;">🔥</div>
+                <div class="hp-card-text"><div class="hp-card-t">312 kcal</div><div class="hp-card-d">Calories burned</div></div>
+              </div>
+            </div>
+            <div class="hp-tab-bar">
+              <div class="hp-tab active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M9 12l3 3 7-7"/></svg>Rewards</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Wellness</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</div>
+            </div>
+            <div class="hp-home-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="how-arrow"><svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 7h21M17 2l5 5-5 5"/></svg></div>
+      <div class="how-step anim anim-d2">
+        <div class="how-medallion">
+          <svg class="ring" viewBox="0 0 100 100"><defs><linearGradient id="r2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f7755"/><stop offset="1" stop-color="#b89243"/></linearGradient></defs><circle cx="50" cy="50" r="45" fill="none" stroke="rgba(45,90,63,0.16)" stroke-width="5"/><circle cx="50" cy="50" r="45" fill="none" stroke="url(#r2)" stroke-width="5" stroke-linecap="round" stroke-dasharray="189 283" transform="rotate(-90 50 50)"/></svg>
+          <div class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><path d="M9 12.5l1.8 1.8L15 10.5"/><path d="m16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05"/><path d="m7.88 16.36.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05"/></svg></div>
+        </div>
+        <div class="how-num">02</div>
+        <div class="how-title" data-i18n="how.s2.title">Get verified</div>
+        <div class="how-desc" data-i18n="how.s2.desc">Heart rate, strain &amp; duration confirm genuine effort. No faking it.</div>
+        <div class="how-phone">
+          <div class="how-phone-screen">
+            <div class="how-phone-sbar"><span>9:41</span><span>···</span></div>
+            <div class="hp-logo-bar"><span class="hp-logo">earnd.</span><span class="hp-notif">🔔</span></div>
+            <div class="how-phone-body">
+              <div class="hp-title">Workout verified ✓</div>
+              <div class="hp-sub">Your run has been verified by Earnd</div>
+              <div class="hp-ring-wrap">
+                <svg class="hp-ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(45,90,63,0.15)" stroke-width="7"/><circle cx="50" cy="50" r="40" fill="none" stroke="#2d5a3f" stroke-width="7" stroke-linecap="round" stroke-dasharray="201 251" transform="rotate(-90 50 50)"/><text x="50" y="47" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="24" fill="#1a2419">4</text><text x="50" y="62" text-anchor="middle" font-size="10" fill="#6e6a58">of 5</text></svg>
+                <div class="hp-ring-info">
+                  <div class="hp-ring-k">Cycle progress</div>
+                  <div class="hp-ring-t">1 more workout to unlock rewards!</div>
+                </div>
+              </div>
+              <div class="hp-card">
+                <div class="hp-card-icon" style="background:#dde3d2;">✓</div>
+                <div class="hp-card-text"><div class="hp-card-t">Effort score: 8.4</div><div class="hp-card-d">High intensity confirmed</div></div>
+                <span class="hp-pill green">Verified</span>
+              </div>
+              <div class="hp-card">
+                <div class="hp-card-icon" style="background:#dde3d2;">⌚</div>
+                <div class="hp-card-text"><div class="hp-card-t">28 min · 142 bpm</div><div class="hp-card-d">Duration &amp; heart rate logged</div></div>
+                <span class="hp-pill green">Synced</span>
+              </div>
+              <div class="hp-bar"><div class="hp-bar-fill" style="width:80%"></div></div>
+              <div style="font-size:6.5px;color:var(--muted);text-align:center;margin-top:2px;">4 of 5 workouts complete</div>
+            </div>
+            <div class="hp-tab-bar">
+              <div class="hp-tab active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M9 12l3 3 7-7"/></svg>Rewards</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Wellness</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</div>
+            </div>
+            <div class="hp-home-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="how-arrow"><svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 7h21M17 2l5 5-5 5"/></svg></div>
+      <div class="how-step anim anim-d3">
+        <div class="how-medallion">
+          <svg class="ring" viewBox="0 0 100 100"><defs><linearGradient id="r3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f7755"/><stop offset="1" stop-color="#cf9f3e"/></linearGradient></defs><circle cx="50" cy="50" r="45" fill="none" stroke="rgba(45,90,63,0.16)" stroke-width="5"/><circle cx="50" cy="50" r="45" fill="none" stroke="url(#r3)" stroke-width="5" stroke-linecap="round" stroke-dasharray="283 283" transform="rotate(-90 50 50)"/></svg>
+          <div class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8"/><path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8"/></svg></div>
+        </div>
+        <div class="how-num">03</div>
+        <div class="how-title" data-i18n="how.s3.title">Get earnd</div>
+        <div class="how-desc" data-i18n="how.s3.desc">After 5 verified workouts, unlock discounts at partner venues near you.</div>
+        <div class="how-phone">
+          <div class="how-phone-screen">
+            <div class="how-phone-sbar"><span>9:41</span><span>···</span></div>
+            <div class="hp-logo-bar"><span class="hp-logo">earnd.</span><span class="hp-notif">🔔</span></div>
+            <div class="how-phone-body">
+              <div class="hp-confetti">🎉</div>
+              <div class="hp-title" style="text-align:center;">Rewards unlocked!</div>
+              <div class="hp-sub" style="text-align:center;">You've completed 5 workouts. Time to get earnd.</div>
+              <div class="hp-reward-card">
+                <div class="hp-reward-big">20%</div>
+                <div class="hp-reward-venue">Verde Bowl</div>
+                <div class="hp-reward-offer">20% off your order · Min. €15</div>
+                <div class="hp-btn">Redeem now</div>
+              </div>
+              <div class="hp-reward-card">
+                <div style="font-size:7px;font-weight:700;color:#6e4f17;text-transform:uppercase;letter-spacing:0.06em;">Free</div>
+                <div class="hp-reward-venue">Jugo Fresco</div>
+                <div class="hp-reward-offer">Free energy shot with any juice</div>
+                <div class="hp-btn" style="background:#9a7128;">Redeem now</div>
+              </div>
+              <div class="hp-reward-card">
+                <div class="hp-reward-big">15%</div>
+                <div class="hp-reward-venue">The Clean Kitchen</div>
+                <div class="hp-reward-offer">15% off any salad bowl</div>
+                <div class="hp-btn">Redeem now</div>
+              </div>
+            </div>
+            <div class="hp-tab-bar">
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</div>
+              <div class="hp-tab active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M9 12l3 3 7-7"/></svg>Rewards</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Wellness</div>
+              <div class="hp-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</div>
+            </div>
+            <div class="hp-home-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE / MANIFESTO -->
+<section class="lp-section lp-manifesto">
+  <div class="lp-container">
+    <div class="manifesto-inner anim">
+      <div class="manifesto-sign" style="margin-top:0;margin-bottom:20px;font-size:42px;color:#f1ecdf;">earnd.</div>
+      <div class="manifesto-eyebrow" data-i18n="manifesto.eyebrow">Who we are</div>
+      <div class="manifesto-text" data-i18n-html="manifesto.text">
+        You get rewarded for everything these days. Except the thing that matters most — <span class="highlight">looking after yourself.</span><br><br>
+        Earnd changes that. Every workout you put in — a run, a gym session, padel with a friend, even an evening walk — earns you real rewards at the places you already love.<br><br>
+        In a world where everything is instant and effortless, here's to rewarding the things that <span class="highlight">actually take effort.</span><br><br>
+        Think of us as that little nudge of motivation to keep you moving.<br><br>
+        Here's to moving forward together.<br>
+        <span class="highlight">Because we've all earnd it.</span>
+      </div>
+      <div class="manifesto-sign">earnd.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="lp-section lp-waitlist" id="waitlist">
+  <div class="lp-container">
+    <span class="section-eyebrow anim" data-i18n="wl.eyebrow">Early access</span>
+    <h2 class="section-h2 anim" data-i18n-html="wl.h2">Be first to <span class="it">earn.</span></h2>
+    <p class="section-sub anim" data-i18n="wl.sub">Sign up for early access when we launch in Barcelona. Be the first to start earning real rewards for real workouts.</p>
+    <form class="wl-form anim" id="footer-form" onsubmit="handleWaitlist(event, 'footer')">
+      <div class="wl-form-row">
+        <input type="text" name="name" placeholder="Your name" required data-i18n-placeholder="form.name">
+        <input type="email" name="email" placeholder="Enter your email" required data-i18n-placeholder="form.email">
+      </div>
+      <button type="submit" data-i18n="form.submit">Join the waitlist</button>
+    </form>
+    <div class="wl-success" id="footer-success">
+      <div class="check">&#10003;</div>
+      <h3 data-i18n="form.success.title">You're on the list!</h3>
+      <p data-i18n="form.success.desc">We'll let you know when earnd launches in Barcelona.</p>
+    </div>
+    <div class="wl-questionnaire" id="footer-questionnaire">
+      <div class="wl-q-title" data-i18n="q.title">Quick questions (optional)</div>
+      <div class="wl-q-subtitle" data-i18n="q.subtitle">Help us build the best experience for you</div>
+      <div class="wl-q-group">
+        <label data-i18n="q.q1">How many times a week do you exercise?</label>
+        <div class="q-options" data-q="exercise_frequency">
+          <button type="button" class="q-opt" data-val="0-1">0–1</button>
+          <button type="button" class="q-opt" data-val="2-3">2–3</button>
+          <button type="button" class="q-opt" data-val="4-5">4–5</button>
+          <button type="button" class="q-opt" data-val="6+">6+</button>
+        </div>
+      </div>
+      <div class="wl-q-group">
+        <label data-i18n="q.q2">Would you complete 5 days of exercise to earn a reward?</label>
+        <div class="q-options" data-q="five_day_commitment">
+          <button type="button" class="q-opt" data-val="yes" data-i18n="q.yes">Yes</button>
+          <button type="button" class="q-opt" data-val="maybe" data-i18n="q.maybe">Maybe</button>
+          <button type="button" class="q-opt" data-val="no" data-i18n="q.no">No</button>
+        </div>
+      </div>
+      <div class="wl-q-group">
+        <label data-i18n="q.q3">What value of reward would motivate you to keep going?</label>
+        <div class="q-options" data-q="reward_value">
+          <button type="button" class="q-opt" data-val="10-15%">10–15%</button>
+          <button type="button" class="q-opt" data-val="20-25%">20–25%</button>
+          <button type="button" class="q-opt" data-val="30%+">30%+</button>
+          <button type="button" class="q-opt" data-val="freebies" data-i18n="q.freebies">Freebies</button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+        <button type="button" class="wl-q-submit" onclick="submitQuestionnaire()" data-i18n="q.send">Send answers</button>
+        <button type="button" class="wl-q-skip" onclick="skipQuestionnaire()" data-i18n="q.skip">Skip</button>
+      </div>
+    </div>
+    <div class="wl2-note anim" data-i18n="hero.note">Free · No spam · Launching Q4 2026</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lp-footer">
+  <span class="logo">earnd<span class="dot">.</span></span>
+  <span class="copy">Workout-verified rewards · Barcelona · getearnd.app</span>
+  <a href="partners.html" class="footer-partner-link" data-i18n="footer.partners">For partners →</a>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel" src="landing-phone.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('hero-phone-mount')).render(<HeroPhone />);
+</script>
+
+<script>
+// ============ i18n ============
+const TRANSLATIONS = {
+  en: {
+    'nav.how': 'How it works',
+    'nav.partners': 'For partners',
+    'nav.cta': 'Join waitlist',
+    'hero.eyebrow': "Barcelona's fitness rewards app",
+    'hero.h1': 'Work out. Get verified.<br><span class="it">Get earnd.</span>',
+    'hero.sub': 'Connect your fitness wearable, complete real workouts, and unlock <b>discounts at Barcelona\'s best healthy restaurants</b> and wellness brands. No faking it — every reward is earned.',
+    'hero.note': 'Free · No spam · Launching Q4 2026 in Barcelona',
+    'form.name': 'Your name',
+    'form.email': 'Enter your email',
+    'form.submit': 'Join the waitlist',
+    'form.submitting': 'Joining...',
+    'form.success.title': "You're on the list!",
+    'form.success.desc': "We'll let you know when earnd launches in Barcelona.",
+    'how.eyebrow': 'How Earnd works',
+    'how.h2': 'Effort in, <span class="it">rewards out.</span>',
+    'how.s1.title': 'Work out',
+    'how.s1.desc': 'Running, gym, padel, yoga — any real workout tracked by your wearable.',
+    'how.s2.title': 'Get verified',
+    'how.s2.desc': 'Heart rate, strain & duration confirm genuine effort. No faking it.',
+    'how.s3.title': 'Get earnd',
+    'how.s3.desc': 'After 5 verified workouts, unlock discounts at partner venues near you.',
+    'manifesto.eyebrow': 'Who we are',
+    'manifesto.text': 'You get rewarded for everything these days. Except the thing that matters most — <span class="highlight">looking after yourself.</span><br><br>Earnd changes that. Every workout you put in — a run, a gym session, padel with a friend, even an evening walk — earns you real rewards at the places you already love.<br><br>In a world where everything is instant and effortless, here\'s to rewarding the things that <span class="highlight">actually take effort.</span><br><br>Think of us as that little nudge of motivation to keep you moving.<br><br>Here\'s to moving forward together.<br><span class="highlight">Because we\'ve all earnd it.</span>',
+    'partners.eyebrow': 'For partners',
+    'partners.h2': 'Get your brand in front of people <span class="it">who actually show up.</span>',
+    'partners.sub': "Earnd members are 22–35 year olds who train regularly, wear fitness wearables, and already eat at places like yours. They've earned their reward — and they'll walk through your door to use it.",
+    'partners.b1.t': 'Reach motivated, health-conscious customers',
+    'partners.b1.d': 'Your exact audience — people in a healthy mindset who care what they eat after a workout.',
+    'partners.b2.t': 'Drive genuine foot traffic & new faces',
+    'partners.b2.d': 'Every reward is redeemed in person. Every redemption is a new customer choosing you.',
+    'partners.b3.t': 'Free to join — zero risk, zero cost',
+    'partners.b3.d': 'No upfront fee, no commitment, no commission. You give only the discount you set, when someone redeems.',
+    'partners.cta.h3': 'Be one of the first venues <span class="it">on Earnd in Barcelona.</span>',
+    'partners.cta.p': "We're hand-picking a small group of founding partners for launch — featured first, shaping the programme, front-of-mind with members from day one.",
+    'partners.cta.btn': 'Become a founding partner',
+    'wl.eyebrow': 'Early access',
+    'wl.h2': 'Be first to <span class="it">earn.</span>',
+    'wl.sub': 'Sign up for early access when we launch in Barcelona. Be the first to start earning real rewards for real workouts.',
+    'q.title': 'Quick questions (optional)',
+    'q.subtitle': 'Help us build the best experience for you',
+    'q.q1': 'How many times a week do you exercise?',
+    'q.q2': 'Would you complete 5 days of exercise to earn a reward?',
+    'q.q3': 'What value of reward would motivate you to keep going?',
+    'q.yes': 'Yes', 'q.maybe': 'Maybe', 'q.no': 'No',
+    'q.freebies': 'Freebies',
+    'q.send': 'Send answers', 'q.skip': 'Skip',
+    'footer.partners': 'For partners →',
+  },
+  es: {
+    'nav.how': 'Cómo funciona',
+    'nav.partners': 'Para negocios',
+    'nav.cta': 'Apuntarse',
+    'hero.eyebrow': 'La app de recompensas fitness de Barcelona',
+    'hero.h1': 'Entrena. Verifica.<br><span class="it">Gana earnd.</span>',
+    'hero.sub': 'Conecta tu wearable de fitness, completa entrenamientos reales y desbloquea <b>descuentos en los mejores restaurantes saludables de Barcelona</b> y marcas de bienestar. Sin trampas — cada recompensa se gana.',
+    'hero.note': 'Gratis · Sin spam · Lanzamiento Q4 2026 en Barcelona',
+    'form.name': 'Tu nombre',
+    'form.email': 'Tu correo electrónico',
+    'form.submit': 'Apuntarme a la lista',
+    'form.submitting': 'Apuntando...',
+    'form.success.title': '¡Estás en la lista!',
+    'form.success.desc': 'Te avisaremos cuando earnd se lance en Barcelona.',
+    'how.eyebrow': 'Cómo funciona Earnd',
+    'how.h2': 'Esfuerzo dentro, <span class="it">recompensas fuera.</span>',
+    'how.s1.title': 'Entrena',
+    'how.s1.desc': 'Running, gimnasio, pádel, yoga — cualquier entrenamiento real registrado por tu wearable.',
+    'how.s2.title': 'Verifica',
+    'how.s2.desc': 'Frecuencia cardíaca, esfuerzo y duración confirman el esfuerzo real. Sin trampas.',
+    'how.s3.title': 'Gana earnd',
+    'how.s3.desc': 'Después de 5 entrenamientos verificados, desbloquea descuentos en locales asociados cerca de ti.',
+    'manifesto.eyebrow': 'Quiénes somos',
+    'manifesto.text': 'Hoy en día te recompensan por todo. Excepto por lo que más importa — <span class="highlight">cuidar de ti mismo.</span><br><br>Earnd cambia eso. Cada entrenamiento que haces — correr, ir al gimnasio, jugar pádel con un amigo, incluso un paseo por la tarde — te da recompensas reales en los lugares que ya te gustan.<br><br>En un mundo donde todo es instantáneo y sin esfuerzo, brindamos por recompensar las cosas que <span class="highlight">de verdad cuestan esfuerzo.</span><br><br>Piensa en nosotros como ese pequeño empujón de motivación para seguir moviéndote.<br><br>Brindemos por avanzar juntos.<br><span class="highlight">Porque todos nos lo hemos earnd.</span>',
+    'partners.eyebrow': 'Para negocios',
+    'partners.h2': 'Pon tu marca delante de gente <span class="it">que de verdad aparece.</span>',
+    'partners.sub': 'Los miembros de Earnd tienen entre 22 y 35 años, entrenan regularmente, llevan wearables de fitness y ya comen en sitios como el tuyo. Se han ganado su recompensa — y pasarán por tu puerta para usarla.',
+    'partners.b1.t': 'Llega a clientes motivados y saludables',
+    'partners.b1.d': 'Tu público exacto — personas con mentalidad saludable que les importa qué comen después de entrenar.',
+    'partners.b2.t': 'Genera tráfico real y caras nuevas',
+    'partners.b2.d': 'Cada recompensa se canjea en persona. Cada canje es un nuevo cliente eligiéndote a ti.',
+    'partners.b3.t': 'Gratis — sin riesgo, sin coste',
+    'partners.b3.d': 'Sin cuota, sin compromiso, sin comisión. Solo das el descuento que tú decides, cuando alguien lo canjea.',
+    'partners.cta.h3': 'Sé uno de los primeros locales <span class="it">en Earnd en Barcelona.</span>',
+    'partners.cta.p': 'Estamos seleccionando un pequeño grupo de socios fundadores para el lanzamiento — los primeros destacados, dando forma al programa, en la mente de los miembros desde el primer día.',
+    'partners.cta.btn': 'Ser socio fundador',
+    'wl.eyebrow': 'Acceso anticipado',
+    'wl.h2': 'Sé el primero en <span class="it">ganar.</span>',
+    'wl.sub': 'Regístrate para acceso anticipado cuando lancemos en Barcelona. Sé el primero en ganar recompensas reales por entrenamientos reales.',
+    'q.title': 'Preguntas rápidas (opcional)',
+    'q.subtitle': 'Ayúdanos a crear la mejor experiencia para ti',
+    'q.q1': '¿Cuántas veces a la semana haces ejercicio?',
+    'q.q2': '¿Completarías 5 días de ejercicio para ganar una recompensa?',
+    'q.q3': '¿Qué valor de recompensa te motivaría a seguir?',
+    'q.yes': 'Sí', 'q.maybe': 'Quizás', 'q.no': 'No',
+    'q.freebies': 'Regalos',
+    'q.send': 'Enviar respuestas', 'q.skip': 'Saltar',
+    'footer.partners': 'Para negocios →',
+  },
+  ca: {
+    'nav.how': 'Com funciona',
+    'nav.partners': 'Per a negocis',
+    'nav.cta': "Apuntar-s'hi",
+    'hero.eyebrow': "L'app de recompenses fitness de Barcelona",
+    'hero.h1': 'Entrena. Verifica.<br><span class="it">Guanya earnd.</span>',
+    'hero.sub': "Connecta el teu wearable de fitness, completa entrenaments reals i desbloqueja <b>descomptes als millors restaurants saludables de Barcelona</b> i marques de benestar. Sense trampes — cada recompensa es guanya.",
+    'hero.note': 'Gratis · Sense spam · Llançament Q4 2026 a Barcelona',
+    'form.name': 'El teu nom',
+    'form.email': 'El teu correu electrònic',
+    'form.submit': "Apuntar-me a la llista",
+    'form.submitting': 'Apuntant...',
+    'form.success.title': 'Ets a la llista!',
+    'form.success.desc': "T'avisarem quan earnd es llanci a Barcelona.",
+    'how.eyebrow': 'Com funciona Earnd',
+    'how.h2': 'Esforç dins, <span class="it">recompenses fora.</span>',
+    'how.s1.title': 'Entrena',
+    'how.s1.desc': 'Running, gimnàs, pàdel, ioga — qualsevol entrenament real registrat pel teu wearable.',
+    'how.s2.title': 'Verifica',
+    'how.s2.desc': "Freqüència cardíaca, esforç i durada confirmen l'esforç real. Sense trampes.",
+    'how.s3.title': 'Guanya earnd',
+    'how.s3.desc': "Després de 5 entrenaments verificats, desbloqueja descomptes a locals associats a prop teu.",
+    'manifesto.eyebrow': 'Qui som',
+    'manifesto.text': "Avui dia et recompensen per tot. Excepte pel que més importa — <span class=\"highlight\">cuidar de tu mateix.</span><br><br>Earnd canvia això. Cada entrenament que fas — córrer, anar al gimnàs, jugar a pàdel amb un amic, fins i tot un passeig al vespre — et dóna recompenses reals als llocs que ja t'agraden.<br><br>En un món on tot és instantani i sense esforç, brindem per recompensar les coses que <span class=\"highlight\">de veritat costen esforç.</span><br><br>Pensa en nosaltres com aquella petita empenta de motivació per seguir movent-te.<br><br>Brindem per avançar junts.<br><span class=\"highlight\">Perquè tots ens ho hem earnd.</span>",
+    'partners.eyebrow': 'Per a negocis',
+    'partners.h2': 'Posa la teva marca davant de gent <span class="it">que de veritat apareix.</span>',
+    'partners.sub': "Els membres d'Earnd tenen entre 22 i 35 anys, entrenen regularment, porten wearables de fitness i ja mengen a llocs com el teu. S'han guanyat la seva recompensa — i passaran per la teva porta per fer-la servir.",
+    'partners.b1.t': 'Arriba a clients motivats i saludables',
+    'partners.b1.d': "El teu públic exacte — persones amb mentalitat saludable que els importa què mengen després d'entrenar.",
+    'partners.b2.t': 'Genera trànsit real i cares noves',
+    'partners.b2.d': 'Cada recompensa es bescanvia en persona. Cada bescanvi és un nou client que et tria a tu.',
+    'partners.b3.t': 'Gratis — sense risc, sense cost',
+    'partners.b3.d': "Sense quota, sense compromís, sense comissió. Només dones el descompte que tu decideixes, quan algú el bescanvia.",
+    'partners.cta.h3': 'Sigues un dels primers locals <span class="it">a Earnd a Barcelona.</span>',
+    'partners.cta.p': "Estem seleccionant un petit grup de socis fundadors pel llançament — els primers destacats, donant forma al programa, al cap dels membres des del primer dia.",
+    'partners.cta.btn': 'Ser soci fundador',
+    'wl.eyebrow': 'Accés anticipat',
+    'wl.h2': 'Sigues el primer en <span class="it">guanyar.</span>',
+    'wl.sub': "Registra't per a accés anticipat quan llancem a Barcelona. Sigues el primer en guanyar recompenses reals per entrenaments reals.",
+    'q.title': 'Preguntes ràpides (opcional)',
+    'q.subtitle': 'Ajuda\'ns a crear la millor experiència per a tu',
+    'q.q1': "Quantes vegades a la setmana fas exercici?",
+    'q.q2': 'Completaries 5 dies d\'exercici per guanyar una recompensa?',
+    'q.q3': 'Quin valor de recompensa et motivaria a seguir?',
+    'q.yes': 'Sí', 'q.maybe': 'Potser', 'q.no': 'No',
+    'q.freebies': 'Regals',
+    'q.send': 'Enviar respostes', 'q.skip': 'Saltar',
+    'footer.partners': 'Per a negocis →',
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'ca' ? 'ca' : lang === 'es' ? 'es' : 'en';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang));
+  const t = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key]) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key]) el.placeholder = t[key];
+  });
+}
+
+// ============ WAITLIST FORM ============
+// REPLACE THIS URL with your Google Apps Script web app URL after deploying
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8PgajEEsOvsOaIj0BqSG75gZbtSUCWV4IN91QvqkBjsIIn7iwmgmf4V9rGwaAu0/exec';
+
+let lastFormSource = null;
+let lastEmail = '';
+let lastName = '';
+
+function handleWaitlist(e, source) {
+  e.preventDefault();
+  const form = e.target;
+  const name = form.querySelector('input[name="name"]').value.trim();
+  const email = form.querySelector('input[name="email"]').value.trim();
+  const btn = form.querySelector('button[type="submit"]');
+  const t = TRANSLATIONS[currentLang];
+
+  lastFormSource = source;
+  lastName = name;
+  lastEmail = email;
+
+  btn.disabled = true;
+  btn.textContent = t['form.submitting'];
+
+  const data = { name, email, language: currentLang, source, timestamp: new Date().toISOString() };
+
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+  }).then(() => showSuccess(source)).catch(() => showSuccess(source));
+}
+
+function showSuccess(source) {
+  const form = document.getElementById(source + '-form');
+  const success = document.getElementById(source + '-success');
+  const questionnaire = document.getElementById(source + '-questionnaire');
+  form.style.display = 'none';
+  success.classList.add('show');
+  questionnaire.classList.add('show');
+}
+
+// ---- Questionnaire option selection ----
+document.querySelectorAll('.q-opt').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.closest('.q-options').querySelectorAll('.q-opt').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+function submitQuestionnaire() {
+  const answers = {};
+  const activeQ = document.getElementById(lastFormSource + '-questionnaire');
+  activeQ.querySelectorAll('.q-options').forEach(group => {
+    const q = group.getAttribute('data-q');
+    const sel = group.querySelector('.q-opt.selected');
+    answers[q] = sel ? sel.getAttribute('data-val') : '';
+  });
+
+  const data = {
+    name: lastName,
+    email: lastEmail,
+    type: 'questionnaire',
+    language: currentLang,
+    ...answers,
+    timestamp: new Date().toISOString()
+  };
+
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+  });
+  finishQuestionnaire();
+}
+
+function skipQuestionnaire() {
+  finishQuestionnaire();
+}
+
+function finishQuestionnaire() {
+  const activeQ = document.getElementById(lastFormSource + '-questionnaire');
+  activeQ.innerHTML = '<div style="text-align:center;padding:8px;"><span style="font-size:20px;">&#10003;</span><p style="font-size:14px;color:var(--soft);margin-top:4px;">' +
+    (currentLang === 'es' ? '¡Gracias!' : currentLang === 'ca' ? 'Gràcies!' : 'Thank you!') + '</p></div>';
+}
+
+// ============ SCROLL ANIMATIONS ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+
+// ============ NAV SCROLL ============
+window.addEventListener('scroll', () => {
+  document.querySelector('.lp-nav').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+</script>
+</body>
+</html>
